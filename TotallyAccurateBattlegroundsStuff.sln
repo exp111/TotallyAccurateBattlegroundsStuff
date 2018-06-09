@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotallyAccurateBattlegroundStuff", "TotallyAccurateBattlegroundStuff\TotallyAccurateBattlegroundStuff.csproj", "{41E08E1B-CDB0-47F4-A3AD-45241BE84312}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TotallyAccurateBattlegroundsStuff", "TotallyAccurateBattlegroundStuff\TotallyAccurateBattlegroundsStuff.csproj", "{41E08E1B-CDB0-47F4-A3AD-45241BE84312}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
