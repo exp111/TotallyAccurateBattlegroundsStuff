@@ -8,6 +8,7 @@ using Landfall.Network;
 using System.Reflection;
 using HighlightingSystem;
 using Harmony;
+using System.Reflection.Emit;
 
 namespace TotallyAccurateBattlegroundsStuff
 {
@@ -112,9 +113,9 @@ namespace TotallyAccurateBattlegroundsStuff
 						// Check for dead player & local player
 						if (player.gameObject != Player.localPlayer.gameObject)
 						{
-							//Highlighter highlighter = player.GetComponent<Highlighter>();
-							//highlighter.FlashingOff();
-							//highlighter.ConstantOnImmediate(Color.red);
+							Highlighter highlighter = player.transform.EDEAKJBKLIC<Highlighter>();
+							highlighter.FlashingOff();
+							highlighter.ConstantOnImmediate(Color.red);
 							// Get screen point
 							Vector3 pos = Camera.main.WorldToScreenPoint(hip.transform.position);
 							pos.y = Screen.height - pos.y;
@@ -195,7 +196,7 @@ namespace TotallyAccurateBattlegroundsStuff
 			
 			if (GUI.Button(new Rect(10, 30, 100, 20), "Unload"))
 			{
-				//TODO: Unload somehow
+				//Unload somehow
 				Class1.Unload();
 			}
 
@@ -203,6 +204,12 @@ namespace TotallyAccurateBattlegroundsStuff
 			_distanceESP = GUI.Toggle(new Rect(10, 70, 100, 20), _distanceESP, "Distance ESP");
 			_itemESP = GUI.Toggle(new Rect(10, 90, 100, 20), _itemESP, "Item ESP");
 			_speedHack = GUI.HorizontalSlider(new Rect(10, 110, 100, 20), _speedHack, 0f, 10f);
+
+			if (GUI.Button(new Rect(10, 150, 100, 20), "Reload"))
+			{
+				_players = FindObjectsOfType<Player>().ToList();
+				_items = FindObjectsOfType<Pickup>().ToList();
+			}
 		}
 
 		void ItemMenuFunction(int windowID)

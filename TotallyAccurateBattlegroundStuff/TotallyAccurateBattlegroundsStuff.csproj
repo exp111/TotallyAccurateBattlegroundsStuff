@@ -37,11 +37,43 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Tim\Downloads\Release\net471\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\TotallyAccurateBattlegrounds_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="AmplifyOcclusion">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\AmplifyOcclusion.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\TotallyAccurateBattlegrounds_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="EasyRoads3Dv3">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\EasyRoads3Dv3.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.NRefactory">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="KdTreeLib">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\KdTreeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="MeshExtension">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\MeshExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="ProBuilderMeshOps-Unity5">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\ProBuilderMeshOps-Unity5.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,17 +87,40 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    <Reference Include="UnityEngine.Analytics">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.ARModule.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.UI.dll</HintPath>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>..\..\..\..\Programme\Steam\steamapps\common\TotallyAccurateBattlegrounds\%DEFAULT FOLDER%\TotallyAccurateBattlegrounds_Data\Managed\UnityEngine.InputModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
