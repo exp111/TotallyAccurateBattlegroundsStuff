@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Landfall.Network;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,11 @@ namespace TotallyAccurateBattlegroundsStuff
 			_loadObject = new GameObject();
 			_loadObject.AddComponent<Hack>();
 			UnityEngine.Object.DontDestroyOnLoad(_loadObject);
+		}
+
+		public static void Unload()
+		{
+			UnityEngine.Object.Destroy(_loadObject);
 		}
     }
 }

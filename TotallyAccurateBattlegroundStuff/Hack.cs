@@ -20,8 +20,13 @@ namespace TotallyAccurateBattlegroundsStuff
 		public Rect _itemMenuRect = new Rect(350, 10, 250, 500);
 		public Vector2 _itemScrollPosition = Vector2.zero;
 
+		public static List<Player> _players = new List<Player>();
+
+		public bool _distanceESP = true;
+
 		void Start()
 		{
+			Logger.Log("Hack: Start");
 		}
 
 		void Update()
@@ -43,6 +48,9 @@ namespace TotallyAccurateBattlegroundsStuff
 
 			if (Player.localPlayer != null)
 			{
+				if (_players.Count == 0)
+					_players.AddRange(FindObjectsOfType<Player>());
+
 				//No Recoil + Screenshake
 				DestroyObject(FindObjectOfType<Recoil>());
 				DestroyObject(FindObjectOfType<AddScreenShake>());
@@ -78,17 +86,22 @@ namespace TotallyAccurateBattlegroundsStuff
 					_itemMenuRect = GUI.Window(1338, _itemMenuRect, ItemMenuFunction, "Items");
 			}
 
-			if (Input.GetKey(KeyCode.LeftAlt))
+			if (_distanceESP)
 			{
-				// Get all player "deaths" (fucking retarded name)
-				var playerDeaths = FindObjectsOfType<PlayerDeath>();
-				foreach (PlayerDeath playerDeath in playerDeaths)
+				foreach (Player player in _players)
 				{
-					// Get the respective hip object
-					Hip hip = playerDeath.GetComponentInChildren<Hip>();
-					// Check for dead player & local player
-					if (!playerDeath.dead && playerDeath.gameObject != Player.localPlayer.gameObject)
+					if (!IsValid(player))
 					{
+						_players.Remove(player);
+						continue;
+					}
+					Hip hip = player.m_hip;
+					// Check for dead player & local player
+					if (player.gameObject != Player.localPlayer.gameObject)
+					{
+						//Highlighter highlighter = player.GetComponent<Highlighter>();
+						//highlighter.FlashingOff();
+						//highlighter.ConstantOnImmediate(Color.red);
 						// Get screen point
 						Vector3 pos = Camera.main.WorldToScreenPoint(hip.transform.position);
 						pos.y = Screen.height - pos.y;
@@ -98,11 +111,10 @@ namespace TotallyAccurateBattlegroundsStuff
 							GUI.Label(new Rect(pos.x, pos.y, 30f, 20f), Vector3.Distance(hip.transform.position, Camera.main.transform.position).ToString());
 						}
 					}
-
 				}
 			}
 
-			if (Input.GetKey(KeyCode.RightAlt))
+			if (Input.GetKey(KeyCode.LeftAlt))
 			{
 				var items = FindObjectsOfType<Pickup>();
 				foreach (Pickup item in items)
@@ -165,10 +177,11 @@ namespace TotallyAccurateBattlegroundsStuff
 			if (GUI.Button(new Rect(10, 30, 100, 20), "Unload"))
 			{
 				//TODO: Unload somehow
+				Class1.Unload();
 			}
 
 			_itemMenuVisible = GUI.Toggle(new Rect(10, 50, 100, 20), _itemMenuVisible, "Show Item Menu");
-
+			_distanceESP = GUI.Toggle(new Rect(10, 70, 100, 20), _distanceESP, "Distance ESP");
 		}
 
 		void ItemMenuFunction(int windowID)
@@ -190,14 +203,15 @@ namespace TotallyAccurateBattlegroundsStuff
 			GUI.EndScrollView();
 		}
 
-		List<Pickup> GetPickups(LootDatabase db)
+		bool IsValid(Player player)
 		{
-			List<Pickup> ret = new List<Pickup>();
-			for (int i = 0; i < db.ItemCount; i++)
-			{
-				ret.Add(db.PHNKCHKGHJC(i).pickup);
-			}
-			return ret;
+			if (player == null || player.m_playerDeath == null)
+				return false;
+
+			if (player.m_playerDeath.dead)
+				return false;
+
+			return true;
 		}
 
 		object GetFieldValue(object obj, string name)
@@ -213,5 +227,44 @@ namespace TotallyAccurateBattlegroundsStuff
 			}
 			return null;
 		}
+
+
 	}
+}
+
+namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
+{
+	#region HarmonyPatches
+	[HarmonyPatch(typeof(Player), "Start", null)]
+	public static class CatchNewPlayer
+	{
+		private static void Postfix(Player __instance)
+		{
+			if (__instance != null)
+			{
+				if (!Hack._players.Contains(__instance))
+				{
+					Logger.Log("Added player " + __instance.name);
+					Hack._players.Add(__instance);
+				}
+			}
+		}
+	}
+
+	[HarmonyPatch(typeof(Player), "OnDestroy", null)]
+	public static class RemovePlayer
+	{
+		private static void Postfix(Player __instance)
+		{
+			if (__instance != null)
+			{
+				if (Hack._players.Contains(__instance))
+				{
+					Logger.Log("Removed player " + __instance.name);
+					Hack._players.Remove(__instance);
+				}
+			}
+		}
+	}
+	#endregion
 }
