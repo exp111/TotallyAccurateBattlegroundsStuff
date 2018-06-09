@@ -141,7 +141,7 @@ namespace TotallyAccurateBattlegroundsStuff
 						pos.y = Screen.height - pos.y;
 						if (pos.z > 0f)
 						{
-							GUI.Label(new Rect(pos.x, pos.y, 50, 20), item.name);
+							GUI.Label(new Rect(pos.x, pos.y, 100, 20), item.name);
 						}
 					}
 				}
