@@ -13,6 +13,8 @@ namespace TotallyAccurateBattlegroundsStuff
 	class Hack : MonoBehaviour
 	{
 		private PhotonServerHandler _serverHandler;
+		public Rect _menuRect = new Rect(10, 10, 300, 200);
+		public bool _menuVisible = true;
 
 		void Start()
 		{
@@ -26,6 +28,12 @@ namespace TotallyAccurateBattlegroundsStuff
 
 		void Update()
 		{
+			//Menu Toggle
+			if (Input.GetKeyDown(KeyCode.Insert))
+			{
+				_menuVisible = !_menuVisible;
+			}
+
 			//No Recoil + Screenshake
 			DestroyObject(FindObjectOfType<Recoil>());
 			DestroyObject(FindObjectOfType<AddScreenShake>());
@@ -51,17 +59,18 @@ namespace TotallyAccurateBattlegroundsStuff
 					Skydiving dive = Player.localPlayer.gameObject.GetComponent<Skydiving>();
 					if (dive == null)
 					{
-						dive = Player.localPlayer.gameObject.AddComponent<Skydiving>();
+						Player.localPlayer.gameObject.AddComponent<Skydiving>();
 					}
-
-					dive.Launch(Player.localPlayer.m_playerCamera.transform.forward * 1f /* Increase for speed */);
+					
+					dive.Launch(Player.localPlayer.m_playerCamera.transform.forward * 1f);
 				}
 			}
 		}
 
 		void OnGUI()
 		{
-			GUI.Label(new Rect(10, 10, 300, 300), "Hello World");
+			if (_menuVisible)
+				_menuRect = GUI.Window(1337, _menuRect, MenuFunction, "TABG Hax");
 
 			if (Input.GetKey(KeyCode.LeftAlt))
 			{
@@ -71,6 +80,10 @@ namespace TotallyAccurateBattlegroundsStuff
 				{
 					// Get the respective hip object
 					Hip hip = playerDeath.GetComponentInChildren<Hip>();
+					if (playerDeath.gameObject == Player.localPlayer.gameObject)
+					{
+						playerDeath.health = 1000;
+					}
 					// Check for dead player & local player
 					if (!playerDeath.dead && playerDeath.gameObject != Player.localPlayer.gameObject)
 					{
@@ -99,6 +112,20 @@ namespace TotallyAccurateBattlegroundsStuff
 						GUI.Label(new Rect(pos.x, pos.y, 30f, 20f), item.name);
 					}
 				}
+			}
+		}
+
+		void MenuFunction(int windowID)
+		{
+			// Make a very long rect that is 20 pixels tall.
+			// This will make the window be resizable by the top
+			// title bar - no matter how wide it gets.
+			GUI.DragWindow(new Rect(0, 0, 10000, 20));
+
+			GUI.Label(new Rect(10, 20, 300, 300), "Hello World");
+			if (GUI.Button(new Rect(10, 50, 100, 20), "Unload"))
+			{
+				//TODO: Unload somehow
 			}
 		}
 
