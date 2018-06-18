@@ -31,22 +31,38 @@ namespace TotallyAccurateBattlegroundsStuff
 
 		private bool _init = false;
 
-		void Start()
+		void Init()
 		{
 			FileLog.Reset();
 			FileLog.Log("Init Start");
 
-			HarmonyInstance harmony = HarmonyInstance.Create("exp.tabgstuff");
-			harmony.PatchAll(Assembly.GetExecutingAssembly());
+			HarmonyInstance harmony = HarmonyInstance.Create("exp.hax.tabg.stuff");
+			FileLog.Log("Harmony Instance created");
+
+			//harmony.PatchAll(Assembly.GetExecutingAssembly());
+			var postfix = typeof(HarmonyPatches.CatchNewPlayer).GetMethod("Postfix");
+			harmony.Patch(typeof(Player).GetMethod("Start"), null, new HarmonyMethod(postfix));
+
+			var prefix = typeof(HarmonyPatches.RemovePlayer).GetMethod("Prefix");
+			harmony.Patch(typeof(Player).GetMethod("OnDestroy"), new HarmonyMethod(prefix), null);
+			FileLog.Log("Harmony Patches applied");
 
 			_init = true;
 			FileLog.Log("Init Completed");
 		}
 
-		void Update()
+		void Start()
 		{
 			if (!_init)
-				Start();
+				Init();
+			FileLog.Log("Start");
+		}
+
+		void Update()
+		{
+			FileLog.Log("Update");
+			if (!_init)
+				Init();
 
 			//Menu Toggle
 			if (Input.GetKeyDown(KeyCode.Insert))
@@ -284,7 +300,7 @@ namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
 {
 	#region HarmonyPatches
 	//Players
-	[HarmonyPatch(typeof(Player), "Start", null)]
+	[HarmonyPatch(typeof(Player), "Start")]
 	public static class CatchNewPlayer
 	{
 		private static void Postfix(Player __instance)
@@ -300,10 +316,10 @@ namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
 		}
 	}
 
-	[HarmonyPatch(typeof(Player), "OnDestroy", null)]
+	[HarmonyPatch(typeof(Player), "OnDestroy")]
 	public static class RemovePlayer
 	{
-		private static void Postfix(Player __instance)
+		private static void Prefix(Player __instance)
 		{
 			if (__instance != null)
 			{
@@ -317,7 +333,6 @@ namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
 	}
 
 	//Items
-	[HarmonyPatch(typeof(Pickup), "Start", null)]
 	public static class CatchNewItem
 	{
 		private static void Postfix(Pickup __instance)
@@ -333,10 +348,9 @@ namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
 		}
 	}
 
-	[HarmonyPatch(typeof(Pickup), "OnDestroy", null)]
 	public static class RemoveItem
 	{
-		private static void Postfix(Pickup __instance)
+		private static void Prefix(Pickup __instance)
 		{
 			if (__instance != null)
 			{
