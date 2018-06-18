@@ -29,16 +29,25 @@ namespace TotallyAccurateBattlegroundsStuff
 		public bool _itemESP = true;
 		public float _speedHack = 1.0f;
 
+		private bool _init = false;
+
 		void Start()
 		{
-			Logger.Log("Hack: Start");
+			FileLog.Reset();
+			FileLog.Log("Init Start");
 
-			var harmony = HarmonyInstance.Create("exp.tabgstuff");
+			HarmonyInstance harmony = HarmonyInstance.Create("exp.tabgstuff");
 			harmony.PatchAll(Assembly.GetExecutingAssembly());
+
+			_init = true;
+			FileLog.Log("Init Completed");
 		}
 
 		void Update()
 		{
+			if (!_init)
+				Start();
+
 			//Menu Toggle
 			if (Input.GetKeyDown(KeyCode.Insert))
 			{
@@ -284,7 +293,7 @@ namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
 			{
 				if (!Hack._players.Contains(__instance))
 				{
-					Logger.Log("Added player " + __instance.name);
+					FileLog.Log("Added player " + __instance.name);
 					Hack._players.Add(__instance);
 				}
 			}
@@ -300,7 +309,7 @@ namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
 			{
 				if (Hack._players.Contains(__instance))
 				{
-					Logger.Log("Removed player " + __instance.name);
+					FileLog.Log("Removed player " + __instance.name);
 					Hack._players.Remove(__instance);
 				}
 			}
@@ -317,7 +326,7 @@ namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
 			{
 				if (!Hack._items.Contains(__instance))
 				{
-					Logger.Log("Added item " + __instance.name);
+					FileLog.Log("Added item " + __instance.name);
 					Hack._items.Add(__instance);
 				}
 			}
@@ -333,7 +342,7 @@ namespace TotallyAccurateBattlegroundsStuff.HarmonyPatches
 			{
 				if (Hack._items.Contains(__instance))
 				{
-					Logger.Log("Removed item " + __instance.name);
+					FileLog.Log("Removed item " + __instance.name);
 					Hack._items.Remove(__instance);
 				}
 			}
